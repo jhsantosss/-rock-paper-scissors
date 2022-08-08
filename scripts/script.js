@@ -78,17 +78,19 @@ function result() {
 
 function game() {
     for (let i = 1; i <= 5; i++) {
-        computerSelection = getComputerChoice()
-        playerSelection = prompt('Choose your weapon:')
-        if (playRound(computerSelection, playerSelection) === 'Tie') {
-            console.log(Log.fg.yellow,`${computerSelection} vs ${playerSelection}\n It's a tie.`,Log.reset)
-            console.log(Log.fg.cyan,score(0,0),Log.reset)
-        } else if (playRound(computerSelection, playerSelection) === 'Computer') {
-            console.log(Log.fg.red,`${computerSelection} vs ${playerSelection}\n You lose the battle`,Log.reset)
-            console.log(Log.fg.cyan,score(1,0),Log.reset)
-        } else if (playRound(computerSelection, playerSelection) === 'Player') {
-            console.log(Log.fg.green,`${computerSelection} vs ${playerSelection}\n You won the battle`,Log.reset)
-            console.log(Log.fg.cyan,score(0,1),Log.reset)
+        if (computerWins < 3 && playerWins < 3 ) {
+            computerSelection = getComputerChoice()
+            playerSelection = prompt('Choose your weapon:')
+            if (playRound(computerSelection, playerSelection) === 'Tie') {
+                console.log(Log.fg.yellow,`${computerSelection} vs ${playerSelection}\n It's a tie.`,Log.reset)
+                console.log(Log.fg.cyan,score(0,0),Log.reset)
+            } else if (playRound(computerSelection, playerSelection) === 'Computer') {
+                console.log(Log.fg.red,`${computerSelection} vs ${playerSelection}\n You lose the battle`,Log.reset)
+                console.log(Log.fg.cyan,score(1,0),Log.reset)
+            } else if (playRound(computerSelection, playerSelection) === 'Player') {
+                console.log(Log.fg.green,`${computerSelection} vs ${playerSelection}\n You won the battle`,Log.reset)
+                console.log(Log.fg.cyan,score(0,1),Log.reset)
+            }
         }
     }
     return result()
